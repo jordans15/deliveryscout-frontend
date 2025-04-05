@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/deliveryscout-frontend/static/css/main.2428753e.css",
+    "main.js": "/deliveryscout-frontend/static/js/main.bc017c5b.js",
+    "static/js/453.ae41b304.chunk.js": "/deliveryscout-frontend/static/js/453.ae41b304.chunk.js",
+    "index.html": "/deliveryscout-frontend/index.html",
+    "main.2428753e.css.map": "/deliveryscout-frontend/static/css/main.2428753e.css.map",
+    "main.bc017c5b.js.map": "/deliveryscout-frontend/static/js/main.bc017c5b.js.map",
+    "453.ae41b304.chunk.js.map": "/deliveryscout-frontend/static/js/453.ae41b304.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2428753e.css",
+    "static/js/main.bc017c5b.js"
+  ]
+}
