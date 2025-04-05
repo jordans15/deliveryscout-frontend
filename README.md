@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# 📦 DeliveryScout – Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+DeliveryScout is a modern React-based frontend application that allows users to compare delivery services based on parcel size, weight, destination, eco-friendliness, speed, and price. It connects to a Flask + MongoDB backend API to fetch courier data and calculate the best delivery options.
 
-## Available Scripts
+## Live Demo  
+[View on GitHub Pages](https://jordans15.github.io/deliveryscout-frontend/)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Key Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Enter parcel dimensions and weight
+- Select destination and sort by **Price**, **Speed**, or **Eco Rating**
+- Toggle to filter for eco-friendly options only
+- Loading indicator during data fetch
+- JWT-based authentication system (Register / Login / Logout)
+- Mobile-responsive layout
+- Dark mode toggle for accessibility
+- Scroll-to-top button for improved UX
+- “Visit Website” button to view courier’s official site
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Frontend:** React, JavaScript, CSS
+- **Backend:** Flask, Python, MongoDB Atlas (see backend repo)
+- **Deployment:** GitHub Pages (Frontend), Render (Backend)
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## API Connection
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The frontend interacts with the backend via RESTful API endpoints hosted on [Render](https://render.com/). Key routes include:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `POST /compare` – Fetch filtered delivery options
+- `POST /register` – Register new users
+- `POST /login` – Authenticate and receive JWT
 
-### `npm run eject`
+Tokens are stored in `localStorage` and used to control session state in the UI.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Deployment (GitHub Pages)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+This project is deployed using [GitHub Pages](https://pages.github.com/).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Project Structure
 
-## Learn More
+src/
+├── components/
+│   ├── LoginForm.js
+│   ├── RegisterForm.js
+│   ├── ParcelForm.js
+│   ├── ResultsList.js
+│   └── ScrollToTop.js
+├── App.js
+├── App.css
+├── index.js
+└── index.css
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Getting Started
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clone the repo:
 
-### Code Splitting
+```bash
+git clone https://github.com/jordans15/deliveryscout-frontend.git
+cd deliveryscout-frontend
+npm install
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Acknowledgements
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Create React App](https://create-react-app.dev/)
+- [Render](https://render.com/) – For backend hosting
+- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) – Cloud database
+- [GitHub Pages](https://pages.github.com/) – For frontend deployment
