@@ -1,0 +1,30 @@
+name: Visual Regression Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  visual-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start local server
+        run: npm start &
+        env:
+          CI: true
+
+      - name: Wait for app to be ready
+        run: npx wait-on http://localhost:3000
+
+      - name: Run Percy visual tests
+        run: npx percy exec -- npx cypress run
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
