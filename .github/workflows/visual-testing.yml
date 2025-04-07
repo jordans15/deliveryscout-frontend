@@ -2,12 +2,9 @@ name: Percy Visual Testing
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
-  workflow_dispatch:
+    branches: [main]
 
 jobs:
   visual-test:
@@ -17,29 +14,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
       - name: Install dependencies
         run: npm install
 
-      - name: Build the app
-        run: npm run build
+      - name: Install Percy and test tools
+        run: npm install --save-dev @percy/cli @percy/cypress start-server-and-test
 
-      - name: Install static server
-        run: npm install -g serve
-
-      - name: Start static server
-        run: serve -s build -l 3000 &
-        env:
-          CI: true
-
-      - name: Wait for app to be ready
-        run: npx wait-on http://localhost:3000
-
-      - name: Run Percy visual tests
-        run: npx percy exec -- npx cypress run
+      - name: Start server and run visual tests
+        run: npx percy exec -- start-server-and-test start http://localhost:3000 'npx cypress run'
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
