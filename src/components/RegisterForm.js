@@ -9,7 +9,7 @@ function RegisterForm({ setShowLogin }) { // ✅ Accept this prop
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://deliveryscout-backend.onrender.com/register', {
+      await axios.post('https://deliveryscout-backend.onrender.com/register', {
         email,
         password
       });
