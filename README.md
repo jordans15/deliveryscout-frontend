@@ -43,7 +43,14 @@ Tokens are stored in `localStorage` and used to control session state in the UI.
 
 ## Deployment (GitHub Pages)
 
-This project is deployed using [GitHub Pages](https://pages.github.com/).
+This project is deployed using [GitHub Pages](https://pages.github.com/). The deployment process uses gh-pages to push the build folder to the gh-pages branch.
+
+To deploy the app manually:
+
+1. Build the app with npm run build.
+2. Deploy to GitHub Pages using npm run deploy.
+
+---
 
 ## Project Structure
 
@@ -59,15 +66,24 @@ src/
 ├── index.js
 └── index.css
 
+---
+
 ## Getting Started
 
 1. Clone the repo:
 
-```bash
 git clone https://github.com/jordans15/deliveryscout-frontend.git
 cd deliveryscout-frontend
+
+2. Install the dependencies:
+
 npm install
+
+3. Start the application locally:
+
 npm start
+
+---
 
 ## Acknowledgements
 

@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
 import axios from 'axios';
 
 function LoginForm({ setToken, setShowLogin }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false); // Add loading state
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage('');
+    setLoading(true); // Set loading to true when submitting
 
     try {
       const response = await axios.post('https://deliveryscout-backend.onrender.com/login', {
         email,
-        password
+        password,
       });
 
       const { access_token } = response.data;
@@ -28,6 +30,8 @@ function LoginForm({ setToken, setShowLogin }) {
     } catch (err) {
       console.error(err);
       setMessage('Login failed. Check your credentials.');
+    } finally {
+      setLoading(false); // Reset loading state after the request completes
     }
   };
 
@@ -36,18 +40,18 @@ function LoginForm({ setToken, setShowLogin }) {
       <h2>Login</h2>
 
       <div>
-        <label>Email:</label>
+        <label htmlFor="email">Email:</label>
         <input
+          id="email"
           type="email"
           value={email}
           required
           onChange={(e) => setEmail(e.target.value)}
         />
-      </div>
 
-      <div>
-        <label>Password:</label>
+        <label htmlFor="password">Password:</label>
         <input
+          id="password"
           type="password"
           value={password}
           required
@@ -55,7 +59,8 @@ function LoginForm({ setToken, setShowLogin }) {
         />
       </div>
 
-      <button type="submit">Login</button>
+      {/* Disable the submit button if the form is not valid or if the login is in progress */}
+      <button type="submit" disabled={loading}>Login</button>
 
       {message && <p>{message}</p>}
     </form>

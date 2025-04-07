@@ -38,6 +38,11 @@ function ResultsList({ results }) {
     'dpd': 'https://www.dpd.co.uk/'
   };
 
+  // Function to handle the click event on the "Visit Website" button
+  const handleClick = (website) => {
+    window.open(website, '_blank');
+  };
+
   return (
     <div className="results-wrapper">
       {results.map((option, index) => {
@@ -67,14 +72,12 @@ function ResultsList({ results }) {
             <p><strong>♻️ Eco Rating:</strong> {option.carbon_rating}</p>
 
             {website && (
-              <a
-                href={website}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => handleClick(website)} // Use onClick here
                 className="visit-btn"
               >
                 Visit Website
-              </a>
+              </button>
             )}
           </div>
         );

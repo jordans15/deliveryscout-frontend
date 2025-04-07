@@ -21,8 +21,8 @@ function App() {
 
   return (
     <div className={`App ${darkMode ? 'dark' : ''}`}>
-      <header className="header">
-        <div className="logo">📦 DeliveryScout</div>
+      <header className="header" aria-label="DeliveryScout header">
+        <div className="logo" aria-label="DeliveryScout logo">📦 DeliveryScout</div>
         <div>
           <button className="login-btn" onClick={() => setDarkMode(prev => !prev)}>
             {darkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
@@ -58,33 +58,31 @@ function App() {
       </header>
 
       <main>
-  {showLogin && (
-    <LoginForm
-      setToken={setToken}
-      setShowLogin={setShowLogin}
-    />
-  )}
+        {showLogin && (
+          <LoginForm
+            setToken={setToken}
+            setShowLogin={setShowLogin}
+          />
+        )}
 
-  {showRegister && (
-    <RegisterForm setShowLogin={() => {
-      setShowRegister(false);
-      setShowLogin(true);
-    }} />
-  )}
+        {showRegister && (
+          <RegisterForm setShowLogin={() => {
+            setShowRegister(false);
+            setShowLogin(true);
+          }} />
+        )}
 
-  {!showLogin && !showRegister && (
-    <>
-      {token && <p className="welcome-msg">Welcome back! 🎉</p>}
-      <ParcelForm setResults={setResults} />
-      <ResultsList results={results} />
-    </>
-  )}
-</main>
+        {!showLogin && !showRegister && (
+          <>
+            {token && <p className="welcome-msg">Welcome back! 🎉</p>}
+            <ParcelForm setResults={setResults} />
+            <ResultsList results={results} />
+          </>
+        )}
+      </main>
 
-<ScrollToTop />
-<Footer />
-
-
+      <ScrollToTop />
+      <Footer aria-label="DeliveryScout footer" />
     </div>
   );
 }
